@@ -1,6 +1,6 @@
 {
   "name": "diploma",
-  "homepage":"https://oushanskeen.github.com/diploma",
+  "homepage":"https://oushanskeen.github.io/netology-reactjs-diploma/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,7 +13,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "predeploy":"npm run buid",
+    "predeploy":"npm run build",
     "deploy":"gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
