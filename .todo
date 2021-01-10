@@ -1,0 +1,92 @@
+  
+  Managing 
+
+- IN ORDER TO manage the process of completing he diploma
+  AS A manager
+  I NEED 
+    - detailed and enumerated list of nested tasks
+    - detailed daily report on processed tasks
+    - evaluated current speed vs necessary speed
+    - simple diagram of state and progress
+    - calendar with iterations
+
+  Developing
+
+- IN ORDER to be able to get the page
+  AS A user
+  I NEED deployed githubPages app
+- IN ORDER TO feel solidity of the site
+  AS A user
+  I NEED same HEADS and FOOTS on every page
+  - IN ORDER to provide same structure with same elements
+    AS root component
+    I NEED
+    - head element
+      - logo
+      - nav
+        - main
+        - catalogue
+        - about shop
+        - contacts
+      - search bar
+      - basket button
+    - body element
+    - foot element
+      - info
+        - about shop
+        - catalogue
+        - contacts
+      - payment
+      - license
+      - contacts
+    - relevant css structure with grid
+- IN ORDER TO provide comfort move through the site
+  AS A user
+  I NEED 
+  - 0 main page
+    IN ORDER TO provide main page
+    AS A root component
+    I NEED 
+    - relevant router
+    - relevant components
+      - banner
+      - hits
+      - catalogue
+  - 1 catalogue page
+    IN ORDER TO provide catalogue page
+    AS A root component
+    I NEED
+    - relevant router
+    - relevant data
+      - relevant route for api request
+      - all items
+    - relevant sub-components
+      - search component
+      - filter component
+      - item cards (image + namei + price + orderButton) components
+  - 2 item page for each from catalogue
+    IN ORDER TO provide catalogue item card component
+    AS A (maybe) root component
+    I NEED
+      - relevant router
+      - relevant data
+        - relevant route for api request
+        - item data from api request
+      - relevant sub-components
+        - image
+        - details
+        - addQuantity
+        - selectSize
+        - orderButton
+        - root component
+  - 3 shop info page
+      
+  - 4 contacts
+  - 5 order basket page
+  - 6 workable search
+  - 7 hits banner or page
+  - 8 loading and error statuses
+  - 9 404 error page
+  - 10 head banner
+
+
