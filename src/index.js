@@ -1,12 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {createStore, applyMiddleware, compose } from "redux";
+import reducer from "./reducers";
+import { Provider } from "react-redux";
 import './index.css';
 import App from './App';
+import thunk from "redux-thunk";
 import reportWebVitals from './reportWebVitals';
+import promise from "redux-promise-middleware";
+
+export const store = createStore(
+  reducer, applyMiddleware(thunk/*,promise*/)
+);
+//console.log("STORE IN ROOT APP", store);
+//console.log("STATE IN STORE:", store.getState());
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

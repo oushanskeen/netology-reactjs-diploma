@@ -1,0 +1,15 @@
+  GIVEN div id=catalogue
+  //actions
+  WHEN just arrived to the page
+  THEN "LOAD_ITEMS" action detected
+    THEN catalogue action creator log is detected
+      with 
+        - category name ("all" by default)
+        - catalogue state ("watch" by default)
+      THEN RouteComposer log is detected
+        
+      THEN catalogue dispatcher log is detected
+        with 
+        
+
+

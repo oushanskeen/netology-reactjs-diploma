@@ -1,0 +1,13 @@
++"main page is loading" 
+  +|-> "getItem actionCreator is triggered" 
+    +|-> "response data is on load"
+      +|-> "getItem_started reducer is triggered"
+    +|-> "response is error"
+      +|-> "getItem_failed reducer is triggered" 
+    +|-> "reponse is data"
+      +|-> "getItem_succeed reducer is triggered"
+
+  
+
+
+

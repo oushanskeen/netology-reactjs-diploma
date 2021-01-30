@@ -1,0 +1,15 @@
+GIVEN browser
+WHEN go to "localhost:7070/" url
+THEN
+  div id=shoeshop
+    div id=header
+      div id=logo
+      div id=navbar
+      div id=side
+        div id=search
+        div id=basket
+    div id=main
+      div id=banner
+      div id=hits
+      div id=catalogue
+    div footer
