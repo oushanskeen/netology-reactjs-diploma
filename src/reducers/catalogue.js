@@ -15,6 +15,9 @@ const initState = {
   error: "",
   url: "http://localhost:7070/api/items",
   items: [],
+  item:{},
+  itemIsLoading:false,
+  itemError:"",
   query: ""
 };
 
@@ -39,6 +42,14 @@ export default function (state = initState, action){
         ? [...payload] : [...items,...payload]
       };
       */
+    case "GET_ITEM_STARTED":
+      console.log("GET_ITEM_STARTED with data: ", payload)
+      return { ...state, itemIsLoading: true, item:{}, itemError:""};
+    case "GET_ITEM_FAILED":
+      return {...state , itemIsLoading:false, item:{}, itemError:"" };
+    case "GET_ITEM_SUCCEED":
+      console.log("GET_ITEM_SUCCEED REDUCER TRIGGERED with items: ", payload);
+      return {...state,itemIsLoading:false, itemError:"", item: payload}; 
     case "CHOOSE_CATEGORY":
       const onChooseCatState = {
         ...state,

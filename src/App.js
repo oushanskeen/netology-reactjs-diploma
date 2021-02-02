@@ -13,33 +13,37 @@ import { Basket } from "./components/Basket";
 import { Main } from "./components/Main";
 import { FourOwFour } from "./components/FourOwFour";
 import { About } from "./components/About";
+import Item from "./components/Item";
 
 function App() {
   // root is left here for the sake of using on gh-pages
-  const root = "netology-reactjs-diploma";
+  //const root = "netology-reactjs-diploma";
   return (
     <>
       <Router>
         <Switch>
-          <Route exact path={`/${root}/main`}>
+          <Route exact path={`/`}>
             <MainFrame kid={<Main />} />
           </Route>
-          <Route path={`/${root}/catalogue`}>
+          <Route exact path={`/catalog.html`}>
             <MainFrame kid={<Catalogue />} />
           </Route>
-          <Route exact path={`/${root}/info`}>
+          <Route exact path="/catalog.html/:id">
+            <MainFrame kid={<Item />} />
+          </Route>
+          <Route exact path={`/info`}>
             <MainFrame kid={<Info />} />
           </Route>
-          <Route exact path={`/${root}/basket`}>
+          <Route exact path={`/basket`}>
             <MainFrame kid={<Basket />} />
           </Route>
-          <Route exact path={`/${root}/404`}>
+          <Route exact path={`/404`}>
             <MainFrame kid={<FourOwFour />} />
           </Route>
-          <Route exact path={`/${root}/about`}>
+          <Route exact path={`/about.html`}>
             <MainFrame kid={<About />} />
           </Route>
-          <Route exact path={`/${root}/contacts`}>
+          <Route exact path={`/contacts.html`}>
             <MainFrame kid={<div>contacts</div>} />
           </Route>
         </Switch>

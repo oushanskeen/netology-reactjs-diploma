@@ -3,9 +3,9 @@ import { box } from "../style/zen";
 
 export const Foot = () => (
   <div style={box}>
-    <Link address="/netology-reactjs-diploma/about" name="about" />
-    <Link address="/netology-reactjs-diploma/catalogue" name="catalogue" />
-    <Link address="/netology-reactjs-diploma/contacts" name="contacts" />
+    <Link address="/about.html" name="about" />
+    <Link address="/catalog.html" name="catalogue" />
+    <Link address="/contacts.html" name="contacts" />
     payment: , license, contacts:
   </div>
 );

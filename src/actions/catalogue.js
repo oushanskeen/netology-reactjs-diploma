@@ -57,6 +57,27 @@ export const getItems = (url) => dispatch => {
   //  payload: "GET ItEMS STUB RESPONSE"
   //});
 };
+const getItemStarted = () => 
+  ({type:"GET_ITEM_STARTED"});
+const getItemSucceed = (data) => 
+  ({type:"GET_ITEM_SUCCEED",payload:data});
+const getItemFailed = (error) => 
+  ({type:"GET_ITEM_FAILED", payload:error});
+export const getItem = (itemId) => dispatch => {
+  console.log("GET ITEM TRIGGERED WITH URL: ", itemId);
+  dispatch(getItemStarted());
+  axios
+    .get(`http://localhost:7070/api/items/${itemId}`)
+    .then(res => dispatch(getItemSucceed(res.data)))
+    .catch(err => dispatch(getItemFailed(err.message)))
+  //dispatch({
+  //  type: "GET_ITEMS",
+  //  //payload: axios.get(url)
+  //  payload: "GET ItEMS STUB RESPONSE"
+  //});
+};
+
+
 export const chooseCategory = (category) => dispatch => {
   dispatch({
     type: "CHOOSE_CATEGORY",
