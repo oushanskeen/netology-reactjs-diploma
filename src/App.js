@@ -9,11 +9,11 @@ import {
 import  Catalogue  from "./components/Catalogue.jsx";
 import { MainFrame } from "./components/MainFrame";
 import { Info } from "./components/Info";
-import { Basket } from "./components/Basket";
 import { Main } from "./components/Main";
 import { FourOwFour } from "./components/FourOwFour";
 import { About } from "./components/About";
 import Item from "./components/Item";
+import Cart from "./components/Cart";
 
 function App() {
   // root is left here for the sake of using on gh-pages
@@ -34,17 +34,17 @@ function App() {
           <Route exact path={`/info`}>
             <MainFrame kid={<Info />} />
           </Route>
-          <Route exact path={`/basket`}>
-            <MainFrame kid={<Basket />} />
-          </Route>
-          <Route exact path={`/404`}>
-            <MainFrame kid={<FourOwFour />} />
-          </Route>
           <Route exact path={`/about.html`}>
             <MainFrame kid={<About />} />
           </Route>
           <Route exact path={`/contacts.html`}>
             <MainFrame kid={<div>contacts</div>} />
+          </Route>
+          <Route exact path={`/cart.html`}>
+            <MainFrame kid={<Cart />} />
+          </Route>
+          <Route>
+            <MainFrame kid={<FourOwFour />} />
           </Route>
         </Switch>
       </Router>

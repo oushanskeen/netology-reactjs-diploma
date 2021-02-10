@@ -20,3 +20,9 @@ export const SET_CATEGORY = "SET_CATEGORY";
 export const INCREMENT_OFFSET = "INCREMENT_OFFSET";
 
 export const SET_URL = "SET_URL";
+
+export const ADD_ITEM_TO_CART = "ADD_ITEM_TO_CART";
+export const POST_ORDER = "POST_ORDER";
+export const POST_ORDER_STARTED = "POST_ORDER_STARTED";
+export const POST_ORDER_FAILED = "POST_ORDER_FAILED";
+export const POST_ORDER_SUCCEED = "POST_ORDER_SUCCEED";

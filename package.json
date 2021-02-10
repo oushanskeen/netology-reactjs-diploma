@@ -1,6 +1,7 @@
 {
   "name": "diploma",
-  "homepage": "https://oushanskeen.github.io/netology-reactjs-diploma",
+  "homepage": "https://oushanskeen.github.io",
+  "proxy": "http://localhost:7070",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

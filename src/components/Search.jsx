@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {box} from "../style/zen.js";
 import {connect} from "react-redux";
-import {useLocation} from "react-router-dom";
+import {useLocation, useHistory } from "react-router-dom";
 import * as catalogueActions from "../actions/catalogue.js";
 
 const Search = ({state, onMakeQuery}) => {
@@ -10,6 +10,7 @@ const Search = ({state, onMakeQuery}) => {
     search:"",
     loco: useLocation().pathname.split("/").slice(-1)
   });
+  const history = useHistory();
   const {isFolded,search} = model; 
   return (
     <div style={box}>
@@ -17,7 +18,15 @@ const Search = ({state, onMakeQuery}) => {
         do search
       </div>
       <div 
-        onKeyPress={e => e.code==="Enter" && onMakeQuery(search)}
+        onKeyPress={e => 
+          e.code==="Enter" 
+          && (search !== "" 
+            ? (()=>{
+                history.push("/catalog.html")
+                onMakeQuery(search);
+              })() 
+            :  setModel({...model,isFolded:!isFolded})
+          )}
       >
         {
           isFolded 

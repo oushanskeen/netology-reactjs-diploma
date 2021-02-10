@@ -14,7 +14,7 @@ export const Catalogue = ({
 }) => {
   console.log("STATE INSIDE CATALOGUE: ", state);
  // const [model, setModel] = useState({...state});
-  const {categories,category, isLoading, error, items,url} = state;
+  const {categories,category, isLoading, error, items,url, upload} = state;
   console.log("CURRENT LOCATION: ", 
     useLocation().pathname.split("/").slice(-1));
   console.log("URL INSIDE STATE: ", url);
@@ -40,6 +40,7 @@ export const Catalogue = ({
               key={title}
               id={title}
               onClick={() => hadleSetCategoryClick({id,title})}
+              style={{background: category.title === title && "grey"}}
             >
               {title}
             </button>)
@@ -50,11 +51,15 @@ export const Catalogue = ({
           ? "is loading" 
           : error !== ""
             ? error
-            : items.map(e => <div key={e}>{JSON.stringify(e)}</div>)
+            : items.map(item => <div key={item}>{JSON.stringify(item)}</div>)
         }
       </div>
       <div>
-        <button id="moreButton" onClick={onMoreItems}>MORE ITEMS</button>
+        {isLoading 
+          ? <div>items are loading</div> 
+          :!(upload.length < 6) &&
+            <button id="moreButton" onClick={onMoreItems}>MORE ITEMS</button>
+        }
       </div>
     </div>
   );

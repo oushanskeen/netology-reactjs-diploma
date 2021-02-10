@@ -1,6 +1,7 @@
 import { Link } from "./Link";
 import { box, boxRow } from "../style/zen";
 import Search from "./Search.jsx";
+import Basket from "./Basket";
 
 export const Head = () => (
   <div style={boxRow}>
@@ -13,6 +14,6 @@ export const Head = () => (
       <Link address="/about.html" name="about" />
       <Link address="/contacts.html" name="contacts" />
     </div>
-    <div style={box}><Search/> basket</div>
+    <div style={box}><Search/> <Basket/></div>
   </div>
 );

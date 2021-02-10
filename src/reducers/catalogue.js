@@ -18,7 +18,8 @@ const initState = {
   item:{},
   itemIsLoading:false,
   itemError:"",
-  query: ""
+  query: "",
+  upload:[]
 };
 
 export default function (state = initState, action){
@@ -34,7 +35,9 @@ export default function (state = initState, action){
     case "GET_ITEMS_SUCCEED":
       console.log("GET_ITEMS_SUCCEED REDUCER TRIGGERED with items: ", payload);
       return {...state,isLoading:false, error:"", items: 
-        !(offset > 0) ? [...payload] : [...items,payload]}
+        !(offset > 0) ? [...payload] : [...items,payload.length > 0 && payload].filter(e => e !== false),
+        upload:payload
+      }
       /*
       return { ...state, items:
         items.length < 1 || 
