@@ -1,9 +1,11 @@
 //import React,{ useState, useEffect } from "react";
 import React from "react";
-import {useLocation} from "react-router-dom";
+import {useLocation, useHistory} from "react-router-dom";
 //import Categories from "./Categories.jsx";
 import {connect} from "react-redux";
 import * as catalogueActions from "../actions/catalogue.js";
+import {Card} from "../style/beauty.js";
+import {boxRow} from "../style/zen.js";
 
 export const Catalogue = ({
   state,
@@ -12,6 +14,7 @@ export const Catalogue = ({
   onGetItems,
   onMoreItems
 }) => {
+  const history = useHistory();
   console.log("STATE INSIDE CATALOGUE: ", state);
  // const [model, setModel] = useState({...state});
   const {categories,category, isLoading, error, items,url, upload} = state;
@@ -27,13 +30,19 @@ export const Catalogue = ({
     console.log("URL INSIDE HOOK: ", url);
     onGetItems(url)
   },[url]);
+  const Item = ({data:{title,price, images, id}}) => 
+    <Card>
+      <img src={images[0]} alt={images[0]} style={{width:"100%"}}/>
+      <div>{title}</div>
+      <div>{price}</div>
+      <button onClick={() => history.push(`catalog.html/${id}`)}>Заказать</button>
+    </Card>
   return (
     <div>
-      <h3>model</h3><br/>
-      {JSON.stringify(state)}
+      {/*JSON.stringify(items)*/}
+      {/*items.map(item => <div>{JSON.stringify(item)}</div>)*/}
       {/*<Categories/>*/}
       <div id="categories">
-      <h3>catalogue component</h3>
         {categories.length > 1 && categories.map(
           ({id,title}) => 
             <button 
@@ -46,12 +55,12 @@ export const Catalogue = ({
             </button>)
         }
       </div>
-      <div id="itemsList">
+      <div id="itemsList" style={{...boxRow,flexWrap:"wrap"}}>
         {isLoading 
           ? "is loading" 
           : error !== ""
             ? error
-            : items.map(item => <div key={item}>{JSON.stringify(item)}</div>)
+            : items.map(item => <Item key={item} data={item}/>)
         }
       </div>
       <div>

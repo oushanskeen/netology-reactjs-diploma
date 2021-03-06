@@ -30,3 +30,6 @@ export const postOrder = (order) => {
       .catch(err => dispatch(postOrderFailed(err.message)))
   };
 };
+
+export const deleteOrderItem = (id) => 
+  ({type:types.DELETE_ORDER_ITEM,payload:id});

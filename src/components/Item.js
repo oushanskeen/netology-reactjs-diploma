@@ -40,7 +40,7 @@ export const Item = ({ itemData, itemIsLoading, itemError, onGetItem, onAddItemT
         order: []
       });
   }, [itemIsLoading]);
-  const { currSizes, size, quantity, image, order, orderBtnEnabled, price } = model;
+  const { currSizes, size, quantity, image, order, orderBtnEnabled, price, art, currMan, currColor, currMat, currSeason, currReason } = model;
   console.log("STATE INSIDE ITEM COMPONENT: ", itemData);
   const onAddItemToOrder = theSize => {
     setModel({
@@ -50,8 +50,17 @@ export const Item = ({ itemData, itemIsLoading, itemError, onGetItem, onAddItemT
   };
   const Model = () => (
     <>
-      <div>model:{JSON.stringify(model)}</div>
+    {/*div>model:{JSON.stringify(model)}</div>*/}
       <div style={box}>{JSON.stringify(itemData)}</div>
+      <img src={image} alt={image}/>
+      <div>
+        <div>articul:{art}</div>
+        <div>manufacturer:{currMan}</div>
+        <div>color:{currColor}</div>
+        <div>material:{currMat}</div>
+        <div>season:{currSeason}</div>
+        <div>reason:{currReason}</div>
+      </div>
     </>
   );
   const SizeButton = () => (
@@ -124,7 +133,7 @@ export const Item = ({ itemData, itemIsLoading, itemError, onGetItem, onAddItemT
         <div>...item is loading</div>
       ) : (
         <div>
-          <h4>item</h4>
+        {/*<h4>item</h4>*/}
           <Model />
           <SizeButton />
           {currSizes.length > 0 && (

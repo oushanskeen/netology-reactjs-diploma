@@ -1,8 +1,8 @@
 export const box = {
   display: "flex",
-  border: "2px solid grey",
-  padding: "3px",
-  margin: "3px"
+  border: "0.5px solid lightGrey",
+  padding: "1px",
+  margin: "1px"
 };
 export const boxRow = {
   ...box,

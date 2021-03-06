@@ -34,8 +34,10 @@ export default function (state = initState, action){
       return {...state ,isLoading:true};
     case "GET_ITEMS_SUCCEED":
       console.log("GET_ITEMS_SUCCEED REDUCER TRIGGERED with items: ", payload);
+      console.log("PAYLOAD UN SECCEED GET ITEMS: ", payload);
       return {...state,isLoading:false, error:"", items: 
-        !(offset > 0) ? [...payload] : [...items,payload.length > 0 && payload].filter(e => e !== false),
+        //!(offset > 0) ? [...items,...payload] : [...items,payload.length > 0 && [...payload]].filter(e => e !== false),
+        offset === 0 ? [...payload] : [...items,...payload],
         upload:payload
       }
       /*
