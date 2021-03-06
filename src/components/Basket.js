@@ -12,7 +12,7 @@ const Basket = ({ cartItems }) => {
   );
   return (
     <div>
-      <button onClick={() => history.push("/cart.html")}>basket page</button>
+      <button onClick={() => history.push("/cart")}>basket page</button>
       <br />
       <PinkLabel cartItems={cartItems} />
     </div>

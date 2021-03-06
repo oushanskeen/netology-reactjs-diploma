@@ -13,6 +13,7 @@ const Search = ({state, onMakeQuery}) => {
   const history = useHistory();
   const {isFolded,search} = model; 
   return (
+    <>
     <div style={box}>
       <div onClick={() => setModel({...model,isFolded:!isFolded})}>
         do search
@@ -39,6 +40,13 @@ const Search = ({state, onMakeQuery}) => {
        {/*do search{isFolded ? "" : <input name="search" value={search}/>}*/}
       </div>
     </div>
+      <div 
+        style={{margin:"4px"}}
+        onClick={() => setModel({...model,isFolded:true,search:""})}
+      >
+        x
+      </div>
+    </>
   );
 };
 const mapStateToProps = _state =>({

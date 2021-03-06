@@ -35,7 +35,7 @@ export const Catalogue = ({
       <img src={images[0]} alt={images[0]} style={{width:"100%"}}/>
       <div>{title}</div>
       <div>{price}</div>
-      <button onClick={() => history.push(`catalog.html/${id}`)}>Заказать</button>
+      <button onClick={() => history.push(`catalog/${id}`)}>Заказать</button>
     </Card>
   return (
     <div>

@@ -13,9 +13,9 @@ export const Head = () => (
     </div>
     <div style={box}>
       <Link address="/" name="main" />
-      <Link address="/catalog.html" name="catalogue" />
-      <Link address="/about.html" name="about" />
-      <Link address="/contacts.html" name="contacts" />
+      <Link address="/catalog" name="catalogue" />
+      <Link address="/about" name="about" />
+      <Link address="/contacts" name="contacts" />
     </div>
     <div style={box}><Search/> <Basket/></div>
   </div>

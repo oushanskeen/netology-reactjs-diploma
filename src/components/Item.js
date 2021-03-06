@@ -118,7 +118,7 @@ export const Item = ({ itemData, itemIsLoading, itemError, onGetItem, onAddItemT
           onClick={() => {
             console.log({id:itemId,quantity:quantity,size:size});
             onAddItemToCart({id:itemId,quantity:quantity,size:size, price:price});
-            history.push("/cart.html")
+            history.push("/cart")
           }}
         >
           do order

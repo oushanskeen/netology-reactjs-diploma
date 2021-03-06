@@ -25,22 +25,22 @@ function App() {
           <Route exact path={`/`}>
             <MainFrame kid={<Main />} />
           </Route>
-          <Route exact path={`/catalog.html`}>
+          <Route exact path={`/catalog`}>
             <MainFrame kid={<Catalogue />} />
           </Route>
-          <Route exact path="/catalog.html/:id">
+          <Route exact path="/catalog/:id">
             <MainFrame kid={<Item />} />
           </Route>
           <Route exact path={`/info`}>
             <MainFrame kid={<Info />} />
           </Route>
-          <Route exact path={`/about.html`}>
+          <Route exact path={`/about`}>
             <MainFrame kid={<About />} />
           </Route>
-          <Route exact path={`/contacts.html`}>
+          <Route exact path={`/contacts`}>
             <MainFrame kid={<div>contacts</div>} />
           </Route>
-          <Route exact path={`/cart.html`}>
+          <Route exact path={`/cart`}>
             <MainFrame kid={<Cart />} />
           </Route>
           <Route>
