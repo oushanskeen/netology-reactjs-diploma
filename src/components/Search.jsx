@@ -48,7 +48,7 @@ const Search = ({state, onMakeQuery, fold=true, inCatalogue}) => {
           )}
       >
         {
-          /*!inCatalogue &&*/ isFolded 
+          !inCatalogue && isFolded 
           ? "" 
           : <div style={boxRow}> <input 
               name="search" 

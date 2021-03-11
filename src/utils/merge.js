@@ -31,15 +31,16 @@ const mergeTheShopItems = (objects, key="quantity") => {
     ["24", "24", "25", "25"]
   );
 */
+  const srt = (xs) => xs.sort((a,b) => a-b);
   const countUniqKeys = (arr, acc) =>
     arr.length === 0
       ? acc
       : acc[acc.length - 1] === arr[0]
-      ? countUniqKeys(arr.slice(1), acc)
-      : countUniqKeys(arr.slice(1), acc.concat(arr[0]));
-/*
+      ? countUniqKeys(srt(arr).slice(1), acc)
+      : countUniqKeys(srt(arr).slice(1), acc.concat(srt(arr)[0]));
   assert("GIVEN: ([1,1,2],[]), THEN ", countUniqKeys([1, 1, 2], []), [1, 2]);
-*/
+  assert("GIVEN: ([1,2,1],[]), THEN ", countUniqKeys([1, 2, 1], []), [1, 2]);
+  
   const reduceArrays = pool => {
     const out = pool.map((a, b) => a + b, [0, 0]);
     return out;
@@ -114,8 +115,9 @@ const mergeTheShopItems = (objects, key="quantity") => {
   */
 
 const mergeBack = (values, keys, sizes) => {
-   // console.log("Values: ", values);
-   // console.log("Keys: ", keys);
+    console.log("Values: ", values);
+    console.log("Keys: ", keys);
+    console.log("EXTRACTED SIZES", extractSizeKeys(objects));
     const out = keys.map((key,index) => 
      // [
         ({
@@ -132,6 +134,7 @@ const mergeBack = (values, keys, sizes) => {
 //        {id:'25',quantity:3,size:"15 US", price: 6000}
      // ]
     );
+    
     return out;
     /*
     return (
@@ -184,7 +187,5 @@ const mergeBack = (values, keys, sizes) => {
   return $.mergeBack();
 };
 //assert("MAJOR OUTPUT", fpool(pooliIN, "quantity"), poolOUT);
-/*
 assert("MAJOR OUTPUT", mergeTheShopItems(lifeExampleIN), lifeExampleOUT);
-*/
 module.exports = mergeTheShopItems;
