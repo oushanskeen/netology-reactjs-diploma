@@ -1,5 +1,6 @@
 //import * as types from "../constants/actionTypes";
 import axios from "axios";
+import configData from "../config.json";
 
 export const getUsers = () => dispatch => {
   dispatch({
@@ -27,8 +28,10 @@ const getCategoriesFailed = (error) =>
 export const getCategories = () => dispatch => {
   console.log("GET CATEGORIES TRIGGERED WITH");
   dispatch(getCategoriesStarted());
+  console.log("BACKEND API: ", configData);
   axios
-    .get("http://localhost:7070/api/categories")
+    //.get("http://localhost:7070/api/categories")
+    .get(`${configData.BACKEND_API}/categories`)
     .then(res => dispatch(getCategoriesSucceed(res.data)))
     .catch(err => dispatch(getCategoriesFailed(err.message)))
   //dispatch({

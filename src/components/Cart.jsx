@@ -11,6 +11,8 @@ const Cart = ({ cartItems, onPostOrder, onDeleteOrder }) => {
     sumToPay: cartItems.cart.map(({price}) => price).reduce((cur,sum)=> cur+sum,0)
   });
   const { items, postOrderIsLoading, sumToPay } = model;
+  //localStorage.setItem("message", "saved in browser storage");
+  console.log("LOCAL: ",localStorage.getItem("message"));
   // [{id:1,q:1},{id:2,q:1}] => [{id:1, q:2}]
   const sumTheIds = objects => "";
   useEffect(() => {

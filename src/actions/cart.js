@@ -26,6 +26,7 @@ export const postOrder = (order) => {
     dispatch(postOrderStarted(order));
     axios
       .post(`http://localhost:7070/api/order`,{...order})
+      //.post(`${process.env.BACKEND_API}/order`,{...order})
       .then(res => dispatch(postOrderSucceed(res.data)))
       .catch(err => dispatch(postOrderFailed(err.message)))
   };

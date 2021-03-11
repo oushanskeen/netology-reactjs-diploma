@@ -29,8 +29,33 @@ export default function (state = initState, action){
   console.log("Merged items: ", mergeItems(state.cart));
   switch(type){
   case ADD_ITEM_TO_CART:
-      console.log("ADD ITEM TO CART reducer triggered with payload: ", payload);
+    console.log(
+      "ADD ITEM TO CART reducer triggered with payload: ", 
+      payload
+    );
+    const localStorageCart = localStorage.getItem("cart");
+    console.log("localStorageCart: ", localStorageCart.length);
+    //const newCart = {cart:mergeItems([...cart,payload])};
+      //
+    
+    localStorage.setItem(
+      "cart",
+      JSON.stringify(
+        localStorage.length > 0 
+        ? [...JSON.parse(localStorageCart),payload]
+        : [payload]
+      )
+    )
+    console.log("LOCAL STORE AFTER: ", localStorage.getItem("cart"));
+    
+    //);
+    //console.log("LS after write: ", localStorage.getItem("cart"));
+    //console.log("newCart: ", newCart);
+        //.length > 0 && localStorage.setItem("cart", 
+   //   JSON.stringify(mergeItems([...cart,payload])));
       return {cart:mergeItems([...cart,payload])};
+    //return {cart:
+    //  JSON.parse(localStorage.getItem("cart"))};
   case POST_ORDER_STARTED:
       console.log("POST ORDER REDUCER STARTED");
       return {...state,postOrderIsLoading:true,postOrderIsError:""};

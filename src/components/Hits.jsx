@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { box } from "../style/zen.js";
 import {Card} from "../style/beauty.js";
+import {ItemCard} from "./ItemCard.jsx";
 
 export const Hits = () => {
   const [state, setState] = useState({
@@ -27,7 +28,7 @@ export const Hits = () => {
         <div id="hits" style={{ ...box, width:"100%" }}>
           <h3>hits</h3>
           {hits.map(hit => (
-            <Hit data={hit} />
+            <ItemCard data={hit} />
           ))}
         </div>
       )}
