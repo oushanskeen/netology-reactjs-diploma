@@ -1,5 +1,6 @@
 import * as types from "../constants/actionTypes";
 import axios from "axios";
+import configData from "../config.json";
 
 export const addItemToCart = (item) => {
   console.log(`ADD_ITEM_TO_CART with ${item}`);
@@ -25,7 +26,7 @@ export const postOrder = (order) => {
     console.log("POST_ORDER initiated with payload: ", order);
     dispatch(postOrderStarted(order));
     axios
-      .post(`http://localhost:7070/api/order`,{...order})
+      .post(`${configData.BACKEND_API}/order`,{...order})
       //.post(`${process.env.BACKEND_API}/order`,{...order})
       .then(res => dispatch(postOrderSucceed(res.data)))
       .catch(err => dispatch(postOrderFailed(err.message)))

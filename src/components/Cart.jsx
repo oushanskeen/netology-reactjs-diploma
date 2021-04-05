@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import * as cartActions from "../actions/cart.js";
+import {box} from "../style/zen.js";
 const mergeTheShopItems = require("../utils/merge.js");
 
 const Cart = ({ cartItems, onPostOrder, onDeleteOrder }) => {
@@ -18,38 +19,48 @@ const Cart = ({ cartItems, onPostOrder, onDeleteOrder }) => {
   useEffect(() => {
     setModel({ ...model, items: cartItems.cart });
   }, [cartItems]);
-
+  const colNames = ["#","Name","Size","Count","Price","Sum","Action"];
+  const tdStyle = {
+    borderCollapse:"collapse", 
+    border:"1px solid lightGrey",
+    padding:"5px",
+  }
   const Table = () => (
-    <div>
-      <table>
+    <div style={{...box, width:"100%"}}>
+      <table style={{
+        borderCollapse:"collapse", 
+        border:"1px solid grey", 
+        width:"100%",
+
+      }}>
         <thead>
           <tr>
-            <td>#</td>
-            <td>Name</td>
-            <td>Size</td>
-            <td>Count</td>
-            <td>Price</td>
-            <td>Sum</td>
-            <td>Action</td>
+            {colNames.map(name => 
+              <td style={tdStyle}>
+              {name}
+              </td>)
+            }
           </tr>
         </thead>
         <tbody>
           {items.map(({ id, quantity, size, price }) => (
             <tr>
-              <td>{id}</td>
-              <td>{"NAME"}</td>
-              <td>{size}</td>
-              <td>{quantity}</td>
-              <td>{price}</td>
-              <td>{"SUM"}</td>
-              <td>
-                <button onClick={() => onDeleteOrder(id)}>delete</button>
+              <td style={tdStyle}>{id}</td>
+              <td style={tdStyle}>{"NAME"}</td>
+              <td style={tdStyle}>{size}</td>
+              <td style={tdStyle}>{quantity}</td>
+              <td style={tdStyle}>{price}</td>
+              <td style={tdStyle}>{quantity*price}</td>
+              <td style={tdStyle}>
+                <button 
+                  onClick={() => onDeleteOrder(id)}
+                  style={{color:"LightCoral", border:"1px solid LightCoral",padding:"0.5vw" }}
+                >delete</button>
               </td>
-              {/*item.map(i => <td>{i}</td>)*/}
             </tr>
           ))}
             <tr>
-              Sum to pay: {sumToPay}
+              <td style={{padding:"1vw"}}>Sum to pay: {sumToPay}</td>
             </tr>
         </tbody>
       </table>
@@ -66,16 +77,16 @@ const Cart = ({ cartItems, onPostOrder, onDeleteOrder }) => {
     });
     const { owner } = order;
     const { phone, address } = owner;
-    //console.log("Merged items: ", mergeTheShopItems(order));
+    const field = {...box, padding:"5px", margin:"5px"};
     return (
-      <div>
-        {postOrderIsLoading ? (
+          <div style={{...box,padding:"30px"}}>
+       {postOrderIsLoading ? (
           <div></div>
         ) : (
-          <div>
+          <div style={{...box, flexDirection:"column"}}>
             <form>
-          {/*<div>ready to post model: {JSON.stringify(order)}</div>*/}
-              <label>tele</label>
+              <div style={field}>
+              <label>tele<br/>
               <input
                 name="phone"
                 value={phone}
@@ -86,7 +97,10 @@ const Cart = ({ cartItems, onPostOrder, onDeleteOrder }) => {
                   })
                 }
               />
-              <label>address</label>
+              </label>
+              </div>
+              <div style={field}>
+              <label>address<br/>
               <input
                 name="address"
                 value={address}
@@ -100,7 +114,10 @@ const Cart = ({ cartItems, onPostOrder, onDeleteOrder }) => {
                   })
                 }
               />
-              <label>agree</label>
+              </label>
+              </div>
+              <div style={field}>
+              <label>
               <input 
                 type="checkbox" 
                 name="agree" 
@@ -109,8 +126,12 @@ const Cart = ({ cartItems, onPostOrder, onDeleteOrder }) => {
                     ...order,
                     orderIsReady:e.target.value === "on" && !order.orderIsReady
                   })}
-              />
+              />agree
+              </label>
+              </div>
+              <div style={field}>
               <button disabled={!order.orderIsReady} onClick={() => onPostOrder(order)}>POST ORDER</button>
+              </div>
             </form>
           </div>
         )}
@@ -118,8 +139,8 @@ const Cart = ({ cartItems, onPostOrder, onDeleteOrder }) => {
     );
   };
   return (
-    <div>
-      {/*JSON.stringify(model)*/}
+    <div style={{...box,flexDirection:"column", width:"100%"}}>
+      {/*JSON.stringify(items)*/}
       <Table />
       <Order />
     </div>

@@ -1,6 +1,6 @@
 export const box = {
   display: "flex",
-  border: "0.5px solid lightGrey",
+  border: "0px solid lightGrey",
   padding: "2px",
   alignItems:"center",
   margin: "1px"

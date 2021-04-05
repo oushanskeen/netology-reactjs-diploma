@@ -12,7 +12,11 @@ const errorImg = "https://populus.ru/wp-content/uploads/2019/11/no-image-500x500
     const history = useHistory();
     return (
     <Card>
-      <div style={{...box, height:"80%",objectFit:"contain"}}>
+      <div style={{
+        ...box, 
+        height:"80%",
+        }}
+      >
         <img 
           src={images[0]} 
           alt={images[0]} 

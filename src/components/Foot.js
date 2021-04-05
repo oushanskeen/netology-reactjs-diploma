@@ -6,20 +6,23 @@ import visa from "../img/visa.png";
 const footCard = {
   ...box,
   flexDirection:"column",
-  width:"33%", 
-  justifyContent:"left" 
+  width:"33%",
+  //height:"auto",
+  alignItems:"flex-start",
+  justifyContent:"space-around" 
+  //alugnItems:"left"
 };
 
 export const Foot = () => (
-  <div style={box}>
+  <div style={{...box}}>
     <div style={footCard}>
-      Information
+      <h3><b>Информация</b></h3>
       <Link address="/about" name="about" />
       <Link address="/catalog" name="catalogue" />
       <Link address="/contacts" name="contacts" />
     </div>
-    <div style={footCard}>
-      Payment is available with:
+    <div style={{...footCard, justifyContent:"space-around"}}>
+      <h3><b>Принимаем к оплате:</b></h3>
       <div style={box}>
         <img src={paypal} alt="paypal" />
         <img src={mastercard} alt="mastercard" />
@@ -35,7 +38,7 @@ export const Foot = () => (
       </div>
     </div>
     <div style={footCard}>
-      Contacts:
+      <h3><b>Контакты:</b></h3>
       <div>
         +7 495 79 03 5 03 
       </div>
@@ -49,7 +52,6 @@ export const Foot = () => (
         <img src={visa} alt="visa" />
         <img src={visa} alt="visa" />
       </div>
-      
     </div>
   </div>
 );

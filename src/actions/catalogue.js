@@ -70,7 +70,7 @@ export const getItem = (itemId) => dispatch => {
   console.log("GET ITEM TRIGGERED WITH URL: ", itemId);
   dispatch(getItemStarted());
   axios
-    .get(`http://localhost:7070/api/items/${itemId}`)
+    .get(`${configData.BACKEND_API}/items/${itemId}`)
     .then(res => dispatch(getItemSucceed(res.data)))
     .catch(err => dispatch(getItemFailed(err.message)))
   //dispatch({

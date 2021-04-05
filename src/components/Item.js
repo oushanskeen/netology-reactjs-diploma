@@ -34,6 +34,7 @@ export const Item = ({ itemData, itemIsLoading, itemError, onGetItem, onAddItemT
       Object.keys(itemData).length > 0 &&
       setModel({
         ...model,
+        title: itemData.title,
         useFF: model.useFF + 1,
         price: itemData.price,
         currSizes: itemData.sizes.filter(({ avalible }) => avalible == true),
@@ -50,7 +51,7 @@ export const Item = ({ itemData, itemIsLoading, itemError, onGetItem, onAddItemT
         order: []
       });
   }, [itemIsLoading]);
-  const { currSizes, size, quantity, image, order, orderBtnEnabled, price, art, currMan, currColor, currMat, currSeason, currReason } = model;
+  const { currSizes, size, quantity, image, title, orderBtnEnabled, price, art, currMan, currColor, currMat, currSeason, currReason } = model;
   console.log("STATE INSIDE ITEM COMPONENT: ", itemData);
   const onAddItemToOrder = theSize => {
     setModel({
@@ -61,7 +62,7 @@ export const Item = ({ itemData, itemIsLoading, itemError, onGetItem, onAddItemT
   const OrderImage = () =>
       <div style={{...box,width:"50vw"}}>
         <img
-          style={{width:"30vw", height:"auto"}}
+          style={{width:"30vw", height:"100%"}}
           src={image} 
           alt={image}
           onError={(e)=>
@@ -73,7 +74,7 @@ export const Item = ({ itemData, itemIsLoading, itemError, onGetItem, onAddItemT
         />
       </div>
   const OrderInfo = () => {
-    const cellStyle = {border:"1px solid grey", margin:0, padding:0};
+    const cellStyle = {border:"1px solid grey", margin:0, padding:10};
     const orderData = {
       articul: art,
       manufacturer: currMan,
@@ -85,11 +86,11 @@ export const Item = ({ itemData, itemIsLoading, itemError, onGetItem, onAddItemT
       return (
       <div style={{
         ...box, 
-        flexDirection:"column", 
+        flexDirection:"column",
         width:"100%",
-        border:"1px solid grey",
+        height:"100%"
       }}>
-      <table style={{border:"1px solid grey", width:"100%"}}>
+      <table style={{border:"1px solid grey", width:"100%", borderCollapse:"collapse"}}>
         {Object.entries(orderData).map(param => (
           <tr>
             <td style={cellStyle}>{param[0]}</td>
@@ -102,7 +103,7 @@ export const Item = ({ itemData, itemIsLoading, itemError, onGetItem, onAddItemT
   }
   const SizeButton = () => (
     <div style={{...box}}>
-      sizes:
+      Размеры в наличии:
       {itemIsLoading ? (
         <div>...item is loading</div>
       ) : (
@@ -112,7 +113,7 @@ export const Item = ({ itemData, itemIsLoading, itemError, onGetItem, onAddItemT
             onClick={() => onAddItemToOrder(e)}
             style={{ background: e.size === size && "lightGrey" }}
           >
-            {e.size}
+            <h4>{e.size}</h4>
           </div>
         ))
       )}
@@ -142,7 +143,7 @@ export const Item = ({ itemData, itemIsLoading, itemError, onGetItem, onAddItemT
     );
     return (
     <div style={{...box, width:"100%"}}>
-        quantity:
+        Количество:
       <div style={{
         ...box, 
         border:"1px solid grey", 
@@ -157,10 +158,10 @@ export const Item = ({ itemData, itemIsLoading, itemError, onGetItem, onAddItemT
     );
   };
   const OrderButton = () => (
-    <div style={{...box, width:"100%"}}>
+    <div>
       {currSizes.length > 0 && (
         <button
-          style={{width:"100%"}}
+          style={{width:"100%", padding:"1vw", background:"LightCoral",color:"white", border:"1px"}}
           disabled={!(quantity > 0 && size !== "" && currSizes.length > 0)}
           onClick={() => {
             console.log({id:itemId,quantity:quantity,size:size});
@@ -168,14 +169,14 @@ export const Item = ({ itemData, itemIsLoading, itemError, onGetItem, onAddItemT
             history.push("/cart")
           }}
         >
-          do order
+          В корзину
         </button>
       )}
     </div>
   );
 
   const OrderControl = () => 
-        <div style={{...box, flexDirection:"column", width:"100%"}}>
+        <div style={{...box, width:"100%", flexDirection:"column"}}>
           <SizeButton />
           {currSizes.length > 0 && (
             <div>
@@ -190,9 +191,14 @@ export const Item = ({ itemData, itemIsLoading, itemError, onGetItem, onAddItemT
           <OrderControl/>
         </div>
   const ModelCard = () => (
-    <div style={{...box, width:"100%"}}>
-        <OrderImage/>
-        <OrderBar/>
+    <div style={{...box, width:"100%", flexDirection:"column"}}>
+        <div>
+          <h2>{title}</h2>
+        </div>
+        <div style={{...box, width:"100%"}}>
+          <OrderImage/>
+          <OrderBar/>
+        </div>
     </div>
   );
   return (

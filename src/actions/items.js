@@ -1,6 +1,6 @@
 import * as types from "../constants/actionTypes";
 import axios from "axios";
-
+import configData from "../config.json";
 
 export const getItemsStarted = () => {
   console.log("GET_ITEMS_STARTED");
@@ -21,7 +21,7 @@ export const getItems = (tail) => {
     console.log("GET_ITEMS initiated with tail: ", tail);
     dispatch(getItemsStarted());
     axios
-      .get(`http://localhost:7070/api/items${tail}`)
+      .get(`${configData.BACKEND_API}/items${tail}`)
       .then(res => dispatch(getItemsSucceed(res.data)))
       .catch(err => dispatch(getItemsFailed(err.message)))
   };

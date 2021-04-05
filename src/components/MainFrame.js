@@ -5,7 +5,7 @@ import { box } from "../style/zen";
 export const MainFrame = ({ kid }) => (
   <>
     <Head />
-    <div style={box}>{kid}</div>
+    {kid}
     <Foot />
   </>
 );
